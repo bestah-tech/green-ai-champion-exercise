@@ -1,0 +1,212 @@
+:root {
+  --paper: #F4F5EF;
+  --paper-line: #E6E8DE;
+  --card: #FDFDFA;
+  --ink-navy: #1B3358;
+  --ink-navy-soft: #33507A;
+  --muted: #6B7686;
+  --gold: #A9863E;
+  --approve: #1F4E8C;
+  --approve-bg: #EAF0F8;
+  --reject: #B23B2E;
+  --reject-bg: #FBECE9;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 48px 20px 80px;
+  background: var(--paper);
+  background-image:
+    linear-gradient(var(--paper-line) 1px, transparent 1px);
+  background-size: 100% 32px;
+  color: var(--ink-navy);
+  font-family: 'Noto Sans KR', sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+.page {
+  width: 100%;
+  max-width: 860px;
+  background: var(--card);
+  border: 1px solid var(--paper-line);
+  box-shadow: 0 18px 40px -24px rgba(27, 51, 88, 0.35);
+  padding: 44px 48px 36px;
+}
+
+/* ---------- Letterhead ---------- */
+
+.letterhead {
+  text-align: center;
+  padding-bottom: 24px;
+  border-bottom: 3px double var(--gold);
+  margin-bottom: 28px;
+}
+
+.emblem {
+  color: var(--gold);
+  display: inline-flex;
+  margin-bottom: 6px;
+}
+
+.doc-no {
+  margin: 0 0 10px;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.letterhead h1 {
+  margin: 0 0 12px;
+  font-family: 'Noto Serif KR', serif;
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: 0.5px;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 13.5px;
+  color: var(--ink-navy-soft);
+}
+
+.subtitle b {
+  color: var(--ink-navy);
+}
+
+/* ---------- Summary chips ---------- */
+
+.summary {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 3px;
+  border: 1px solid currentColor;
+  letter-spacing: 0.3px;
+}
+
+.chip.total { color: var(--ink-navy-soft); background: transparent; }
+.chip.approve { color: var(--approve); background: var(--approve-bg); }
+.chip.reject { color: var(--reject); background: var(--reject-bg); }
+
+/* ---------- Table ---------- */
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14.5px;
+}
+
+thead th {
+  background: var(--ink-navy);
+  color: #F4F5EF;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: 500;
+  font-size: 12.5px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 12px 14px;
+  text-align: right;
+}
+
+thead th:first-child { text-align: left; }
+
+tbody td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--paper-line);
+  text-align: right;
+  font-family: 'Roboto Mono', monospace;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-navy-soft);
+}
+
+tbody td.name {
+  text-align: left;
+  font-family: 'Noto Serif KR', serif;
+  font-weight: 500;
+  color: var(--ink-navy);
+  font-size: 15px;
+}
+
+tbody tr:nth-child(even) { background: #F8F9F4; }
+tbody tr:hover { background: #EFF3EC; }
+
+td.verdict { text-align: center; }
+
+/* ---------- Verdict stamp ---------- */
+
+.stamp {
+  display: inline-block;
+  font-family: 'Noto Serif KR', serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 3px;
+  padding: 4px 12px;
+  border-radius: 4px;
+  border: 2px solid currentColor;
+  box-shadow: 0 0 0 1px currentColor inset;
+  transform: rotate(-3deg);
+}
+
+.stamp.approve {
+  color: var(--approve);
+  transform: rotate(-4deg);
+}
+
+.stamp.reject {
+  color: var(--reject);
+  transform: rotate(3deg);
+}
+
+/* ---------- Footnote ---------- */
+
+.footnote {
+  margin-top: 30px;
+  padding-top: 16px;
+  border-top: 1px solid var(--paper-line);
+}
+
+.footnote p {
+  margin: 0;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 600px) {
+  .page { padding: 32px 20px 28px; }
+  .letterhead h1 { font-size: 21px; }
+  table { font-size: 12.5px; }
+  thead th, tbody td { padding: 9px 8px; }
+  .stamp { font-size: 11px; letter-spacing: 1.5px; padding: 3px 8px; }
+}
+
+/* ---------- Reduced motion / focus ---------- */
+
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
